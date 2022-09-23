@@ -1,15 +1,23 @@
 # flutter_udisk_plugin
 
-A new Flutter project.
+A Flutter project about udisk.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+```dart
+  final _flutterUdiskPlugin = FlutterUdiskPlugin();
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+_flutterUdiskPlugin
+    .setMethodCallHandler((call) => handleChannelMethod(call));
 
+Future<void> handleChannelMethod(MethodCall call) async {
+  switch (call.method) {
+    case "device_removed":
+      todo("usb设备被移除");
+      break;
+    case "device_added":
+      todo("usb设备插入");
+      break;
+  }
+}
+```
